@@ -25,20 +25,10 @@ public class Task4 {
         System.out.println(Arrays.toString(formingFinalArray(leftPart, getBinaryArray(n))));
         System.out.println();
         int bLength = getBinaryArray(n).length;
-//        System.out.println(getBinaryArray(n));
         int[][] array;
         array = resultArray(formingFinalArray(leftPart, getBinaryArray(n)));
-//        for (int i = 0; i < array.length; i++) {
-//            for (int j = 0; j < array[i].length; j++) {
-//                System.out.print(array[i][j]);
-//            }
-//            System.out.println();
-//        }
-
         System.out.println(getCount(array, rightPart));
-
     }
-
     //метод преобразования числа из 10-ой СС в 2-ую СС
     public static String binaryConverter(int a) {
         String result = "";
@@ -57,7 +47,6 @@ public class Task4 {
         result = "1" + result;
         return result;
     }
-
     //метод формирования массива из 2^n строковых элементов, обозначающих
     //двоичное представление чисел с эквивалентом от 0 до (2^n)-1,
     //где n - количество арифметических операций для данного количества элементов л.ч. уравнения
@@ -78,7 +67,6 @@ public class Task4 {
         }
         return binaryRow;
     }
-
     /* метод для объединения двух строк:
     * первая строка - входные даннык - числа, которые стоят в л.ч. уравнения,
     * а другой массив - бинарные представления количества различных вариаций арифметических операций между ними.
@@ -98,7 +86,6 @@ public class Task4 {
         }
         return combArray;
     }
-
     //метод, преобразующий массив строк в двумерный массив интов
     public static int[][] resultArray(StringBuilder[] combArray) {
         int[][] resultArray = new int[combArray.length][combArray[0].length()];
@@ -110,9 +97,7 @@ public class Task4 {
         }
         return resultArray;
     }
-
     public static int getCount(int[][] resultArray, String rightPart) {
-
         int count = 0;
         for (int i = 0; i < resultArray.length; i++) {
             ArrayList<Integer> finalList = new ArrayList<>();
@@ -132,7 +117,6 @@ public class Task4 {
                         } else { // если нет, то умножаем уже имеющеесе произведение на число после знака
                             pow = pow * resultArray[i][j + 1];
                         }
-//                        c++;
                         if (j != resultArray[i].length-2) {
                             j = j + 2;
                         } else {
@@ -140,9 +124,7 @@ public class Task4 {
                             break;
                         }
                     }
-//                    if (c > 1) { //если количество подряд идущих единиц больше, чем 1
                         j = j - 2; //сделано для того, чтобы не проскочить элемент при слкдующей итерации цикла
-//                    }
                     finalList.add(pow); //записываем в массив результат произведения
                 } else if (resultArray[i][j - 2] == 0 && resultArray[i][j] == 0 && j == 3 && (j + 2) == 1) { // частный случай, когда второй по счету знак - "+", а следующий - "*"
                     finalList.add(resultArray[i][j - 1]);
@@ -166,10 +148,6 @@ public class Task4 {
 
             if (sum == Integer.parseInt(rightPart)) {
                 count++;
-//                for (int j = 0; j < resultArray[i][j]; j++) {
-//                    System.out.print("["+resultArray[i][j]+"]");
-//                }
-//                System.out.println();
             }
         }
         return count;
